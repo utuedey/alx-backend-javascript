@@ -9,6 +9,7 @@ const fs = require('fs');
 
 const hostname = '127.0.0.1';
 const port = 1245;
+const app = http.createServer()
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
 const countStudents = (path) => new Promise((resolve, reject) => {
@@ -102,7 +103,7 @@ const SERVER_ROUTE_HANDLERS = [
   },
 ];
 
-const app = http.creatServer('request', (req, res) => {
+app.on('request', (req, res) => {
   for (const routeHandler of SERVER_ROUTE_HANDLERS) {
     if (routeHandler.route === req.url) {
       routeHandler.handler(req, res);
