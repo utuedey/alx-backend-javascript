@@ -9,7 +9,7 @@ const fs = require('fs');
 
 const hostname = '127.0.0.1';
 const port = 1245;
-const app = http.createServer()
+const app = http.createServer();
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
 const countStudents = (path) => new Promise((resolve, reject) => {
